@@ -11,8 +11,15 @@ export function MarketingHeader() {
     <nav className="sticky top-0 z-50 bg-[rgba(246,245,240,0.82)] backdrop-blur-[14px] backdrop-saturate-[1.6] border-b border-[#EEF1EE]">
       <div className="mx-auto max-w-[1200px] flex h-[68px] items-center justify-between px-8 max-[720px]:px-5">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="w-[26px] h-[26px] grid place-items-center rounded-[7px] bg-[#0B1F1C] text-[#F6F5F0]">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2 4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3Z"/></svg>
+          <span className="w-[28px] h-[28px] grid place-items-center rounded-[8px] relative overflow-hidden" style={{
+            background: "linear-gradient(145deg, #0E7C66, #065E4C)",
+            boxShadow: "0 2px 6px rgba(14,124,102,0.3), inset 0 1px 0 rgba(255,255,255,0.12)",
+          }}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2L4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z" fill="rgba(255,255,255,0.18)"/>
+              <path d="M12 2L4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z" stroke="white" strokeWidth="2"/>
+              <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="1.8"/>
+            </svg>
           </span>
           <span className="font-display text-xl font-semibold text-[#0B1F1C] tracking-[-0.01em]">
             WireShield

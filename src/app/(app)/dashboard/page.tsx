@@ -95,10 +95,10 @@ export default async function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        <StatCard label="Transactions" value={fromDb ? transactions.length : 1} icon={LayoutDashboard} />
-        <StatCard label="Active alerts" value={fromDb ? alertCount : DEMO_ALERTS.length} icon={ShieldAlert} />
-        <StatCard label="Verified parties" value={fromDb ? partyCount : DEMO_PARTIES.filter(p => p.verified).length} icon={Users} />
-        <StatCard label="Scanned" value={fromDb ? eventCount : 14} icon={ScanSearch} />
+        <StatCard label="Transactions" value={fromDb ? transactions.length : 1} icon={LayoutDashboard} accent="blue" />
+        <StatCard label="Active alerts" value={fromDb ? alertCount : DEMO_ALERTS.length} icon={ShieldAlert} accent="amber" />
+        <StatCard label="Verified parties" value={fromDb ? partyCount : DEMO_PARTIES.filter(p => p.verified).length} icon={Users} accent="teal" />
+        <StatCard label="Scanned" value={fromDb ? eventCount : 14} icon={ScanSearch} accent="violet" />
       </div>
 
       <div>

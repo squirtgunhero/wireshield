@@ -2,8 +2,10 @@ import Link from "next/link";
 
 function ShieldIcon({ size = 14 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2 4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3Z"/>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2 4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3Z" fill="currentColor" opacity="0.15"/>
+      <path d="M12 2 4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3Z" stroke="currentColor" strokeWidth="2.2"/>
+      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" />
     </svg>
   );
 }
@@ -138,7 +140,10 @@ export default function MarketingPage() {
 
               {/* Floating micro-card */}
               <div className="absolute -right-7 -bottom-8 max-[980px]:right-4 max-[980px]:-bottom-6 bg-white border border-[#E4E8E5] rounded-[14px] shadow-[0_1px_2px_rgba(11,31,28,0.04),0_8px_24px_-12px_rgba(11,31,28,0.12)] px-4 py-3.5 flex items-center gap-3 max-w-[280px]">
-                <div className="w-9 h-9 rounded-[10px] bg-[#0B1F1C] text-[#F6F5F0] grid place-items-center shrink-0">
+                <div className="w-9 h-9 rounded-[10px] grid place-items-center shrink-0 relative overflow-hidden" style={{
+                  background: "linear-gradient(145deg, #0E7C66, #065E4C)",
+                  boxShadow: "0 2px 6px rgba(14,124,102,0.3), inset 0 1px 0 rgba(255,255,255,0.12)",
+                }}>
                   <ShieldIcon size={16} />
                 </div>
                 <div>
@@ -183,7 +188,7 @@ export default function MarketingPage() {
           <div className="grid grid-cols-12 gap-5">
             {/* Wide card: AI Threat Scanner */}
             <div className="col-span-12 lg:col-span-7 bg-white border border-[#E4E8E5] rounded-2xl p-7 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(11,31,28,0.04),0_8px_24px_-12px_rgba(11,31,28,0.12)] hover:border-[rgba(14,124,102,0.22)] transition-all min-h-[380px]">
-              <FeatureIcon d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M12 12m-3 0a3 3 0 1 0 6 0 3 3 0 1 0-6 0" />
+              <FeatureIcon icon="scanner" />
               <h3 className="font-display font-medium text-[22px] tracking-[-0.015em] leading-tight text-[#0B1F1C] mb-2.5">AI threat scanner reads every message like your paranoid colleague</h3>
               <p className={`text-[14.5px] leading-relaxed ${inkSoft} m-0`}>Every email, text, and document passes through a multi-model pipeline that flags phishing, impersonation, homograph attacks, and BEC indicators in under half a second.</p>
               <div className="mt-6 bg-[#FBFAF6] border border-[#EEF1EE] rounded-xl p-3.5 font-mono text-xs leading-[1.7] text-[#3D5753]">
@@ -197,7 +202,7 @@ export default function MarketingPage() {
 
             {/* Narrow card: Party verification */}
             <div className="col-span-12 lg:col-span-5 bg-white border border-[#E4E8E5] rounded-2xl p-7 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(11,31,28,0.04),0_8px_24px_-12px_rgba(11,31,28,0.12)] hover:border-[rgba(14,124,102,0.22)] transition-all">
-              <FeatureIcon d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7m-4 0a4 4 0 1 0 8 0 4 4 0 1 0-8 0M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              <FeatureIcon icon="party" />
               <h3 className="font-display font-medium text-[22px] tracking-[-0.015em] leading-tight text-[#0B1F1C] mb-2.5">Party verification</h3>
               <p className={`text-[14.5px] leading-relaxed ${inkSoft} m-0`}>Continuous identity checks on every buyer, seller, agent, attorney, and title officer. Re-verified when anything changes.</p>
               <div className="mt-6 flex flex-col gap-2">
@@ -209,13 +214,13 @@ export default function MarketingPage() {
 
             {/* Thirds row */}
             <div className="col-span-12 md:col-span-4 bg-white border border-[#E4E8E5] rounded-2xl p-7 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(11,31,28,0.04),0_8px_24px_-12px_rgba(11,31,28,0.12)] hover:border-[rgba(14,124,102,0.22)] transition-all">
-              <FeatureIcon d="M2 6h20v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6ZM2 10h20M6 14h4" />
+              <FeatureIcon icon="wire" />
               <h3 className="font-display font-medium text-[22px] tracking-[-0.015em] leading-tight text-[#0B1F1C] mb-2.5">Wire monitoring</h3>
               <p className={`text-[14.5px] leading-relaxed ${inkSoft} m-0`}>Encrypted verification of routing numbers, account details, and destination banks. Every change triggers a fresh check.</p>
             </div>
 
             <div className="col-span-12 md:col-span-4 bg-white border border-[#E4E8E5] rounded-2xl p-7 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(11,31,28,0.04),0_8px_24px_-12px_rgba(11,31,28,0.12)] hover:border-[rgba(14,124,102,0.22)] transition-all">
-              <FeatureIcon d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
+              <FeatureIcon icon="domain" />
               <h3 className="font-display font-medium text-[22px] tracking-[-0.015em] leading-tight text-[#0B1F1C] mb-2.5">Domain intelligence</h3>
               <p className={`text-[14.5px] leading-relaxed ${inkSoft} m-0`}>Catches homograph attacks, typosquatting, and lookalike domains that humans miss at 11pm.</p>
               <div className="mt-6 flex flex-col gap-1.5">
@@ -226,7 +231,7 @@ export default function MarketingPage() {
             </div>
 
             <div className="col-span-12 md:col-span-4 bg-white border border-[#E4E8E5] rounded-2xl p-7 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(11,31,28,0.04),0_8px_24px_-12px_rgba(11,31,28,0.12)] hover:border-[rgba(14,124,102,0.22)] transition-all">
-              <FeatureIcon d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9ZM10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              <FeatureIcon icon="alert" />
               <h3 className="font-display font-medium text-[22px] tracking-[-0.015em] leading-tight text-[#0B1F1C] mb-2.5">Real-time alerts</h3>
               <p className={`text-[14.5px] leading-relaxed ${inkSoft} m-0`}>Slack, SMS, and email notifications the moment anything looks off. Route to the right person, skip the noise.</p>
             </div>
@@ -345,7 +350,10 @@ export default function MarketingPage() {
       <footer className="py-10 border-t border-[#EEF1EE] bg-[#FBFAF6]">
         <div className={`${wrap} flex items-center justify-between flex-wrap gap-4`}>
           <div className="flex items-center gap-2.5">
-            <span className="w-[26px] h-[26px] grid place-items-center rounded-[7px] bg-[#0B1F1C] text-[#F6F5F0]">
+            <span className="w-[28px] h-[28px] grid place-items-center rounded-[8px] relative overflow-hidden" style={{
+              background: "linear-gradient(145deg, #0E7C66, #065E4C)",
+              boxShadow: "0 2px 6px rgba(14,124,102,0.3), inset 0 1px 0 rgba(255,255,255,0.12)",
+            }}>
               <ShieldIcon />
             </span>
             <span className="font-display font-medium text-base tracking-[-0.01em]">WireShield</span>
@@ -381,10 +389,65 @@ function CheckRow({ status, label, sub, chip }: { status: "ok" | "warn" | "bad";
   );
 }
 
-function FeatureIcon({ d }: { d: string }) {
+function FeatureIcon({ icon }: { icon: "scanner" | "party" | "wire" | "domain" | "alert" }) {
+  const icons: Record<string, React.ReactNode> = {
+    scanner: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="3" fill="url(#gs)" opacity="0.12"/>
+        <path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2" stroke="url(#gs)" strokeWidth="1.7"/>
+        <circle cx="12" cy="12" r="3.5" fill="url(#gs)" opacity="0.25"/>
+        <circle cx="12" cy="12" r="3" stroke="url(#gs)" strokeWidth="1.5"/>
+        <defs><linearGradient id="gs" x1="3" y1="3" x2="21" y2="21"><stop stopColor="#0E7C66"/><stop offset="1" stopColor="#0A5A4A"/></linearGradient></defs>
+      </svg>
+    ),
+    party: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="7" r="3.5" fill="url(#gp)" opacity="0.2"/>
+        <circle cx="9" cy="7" r="3" stroke="url(#gp)" strokeWidth="1.5"/>
+        <path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" fill="url(#gp)" opacity="0.1"/>
+        <path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" stroke="url(#gp)" strokeWidth="1.5"/>
+        <circle cx="18" cy="8" r="2.5" fill="url(#gp)" opacity="0.15"/>
+        <path d="M18 13.5a3 3 0 0 1 3 3V21" stroke="url(#gp)" strokeWidth="1.5"/>
+        <defs><linearGradient id="gp" x1="2" y1="5" x2="21" y2="21"><stop stopColor="#0E7C66"/><stop offset="1" stopColor="#065E4C"/></linearGradient></defs>
+      </svg>
+    ),
+    wire: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="5" width="20" height="15" rx="2.5" fill="url(#gw)" opacity="0.12"/>
+        <rect x="2" y="5" width="20" height="15" rx="2.5" stroke="url(#gw)" strokeWidth="1.5"/>
+        <path d="M2 10h20" stroke="url(#gw)" strokeWidth="1.5"/>
+        <rect x="5" y="14" width="6" height="2" rx="0.5" fill="url(#gw)" opacity="0.35"/>
+        <circle cx="18" cy="15" r="1.5" fill="url(#gw)" opacity="0.3"/>
+        <defs><linearGradient id="gw" x1="2" y1="5" x2="22" y2="20"><stop stopColor="#0E7C66"/><stop offset="1" stopColor="#0A5A4A"/></linearGradient></defs>
+      </svg>
+    ),
+    domain: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9.5" fill="url(#gd)" opacity="0.1"/>
+        <circle cx="12" cy="12" r="9" stroke="url(#gd)" strokeWidth="1.5"/>
+        <path d="M2 12h20" stroke="url(#gd)" strokeWidth="1.3" opacity="0.5"/>
+        <ellipse cx="12" cy="12" rx="4" ry="9" stroke="url(#gd)" strokeWidth="1.3"/>
+        <defs><linearGradient id="gd" x1="3" y1="3" x2="21" y2="21"><stop stopColor="#0E7C66"/><stop offset="1" stopColor="#065E4C"/></linearGradient></defs>
+      </svg>
+    ),
+    alert: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9Z" fill="url(#ga)" opacity="0.15"/>
+        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9Z" stroke="url(#ga)" strokeWidth="1.5"/>
+        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" stroke="url(#ga)" strokeWidth="1.5"/>
+        <circle cx="12" cy="8" r="1" fill="url(#ga)"/>
+        <defs><linearGradient id="ga" x1="3" y1="3" x2="21" y2="21"><stop stopColor="#0E7C66"/><stop offset="1" stopColor="#0A5A4A"/></linearGradient></defs>
+      </svg>
+    ),
+  };
+
   return (
-    <div className="w-[38px] h-[38px] rounded-[10px] grid place-items-center mb-5 border border-[rgba(14,124,102,0.14)]" style={{ background: jadeSoft, color: jadeDeep }}>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>
+    <div className="w-11 h-11 rounded-[12px] grid place-items-center mb-5 relative overflow-hidden" style={{
+      background: "linear-gradient(145deg, #E6F1EE, #D0E8E1)",
+      boxShadow: "0 1px 3px rgba(14,124,102,0.12), inset 0 1px 0 rgba(255,255,255,0.6)",
+    }}>
+      <div className="absolute inset-0 rounded-[12px] border border-[rgba(14,124,102,0.18)]" />
+      {icons[icon]}
     </div>
   );
 }
