@@ -312,13 +312,13 @@ export default function MarketingPage() {
         <div className={wrap}>
           <div className="relative bg-[#0B1F1C] text-[#F6F5F0] rounded-3xl p-[72px_64px] max-[820px]:p-[48px_32px] overflow-hidden grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <div className="absolute inset-0 pointer-events-none" style={{
-              background: "radial-gradient(500px 300px at 85% 20%, rgba(14,124,102,0.45), transparent 60%), radial-gradient(400px 300px at 10% 90%, rgba(14,124,102,0.18), transparent 60%)"
+              background: "radial-gradient(500px 300px at 85% 20%, rgba(14,124,102,0.2), transparent 60%), radial-gradient(400px 300px at 10% 90%, rgba(14,124,102,0.1), transparent 60%)"
             }} />
             <div className="relative">
-              <h2 className="font-display font-normal text-[clamp(32px,4vw,48px)] leading-[1.02] tracking-[-0.025em] mb-5">
-                The average wire fraud loss is <em className="font-light italic text-[#B8DCD2]">six figures</em>. The defense shouldn&apos;t be an afterthought.
+              <h2 className="font-display font-medium text-[clamp(32px,4vw,48px)] leading-[1.08] tracking-[-0.025em] mb-5 text-white">
+                The average wire fraud loss is <em className="font-normal italic text-[#7DDFCA]">six figures</em>. The defense shouldn&apos;t be an afterthought.
               </h2>
-              <p className="text-[#A9BAB6] text-base leading-relaxed mb-7 max-w-[460px]">
+              <p className="text-[#C8D8D4] text-base leading-relaxed mb-7 max-w-[460px]">
                 Start the free trial. We&apos;ll monitor your next transaction end to end — every email, every wire, every party. No credit card. No setup call required.
               </p>
               <div className="flex gap-3 items-center">
