@@ -24,7 +24,7 @@ export function useTransaction(id: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetch_ = useCallback(async () => {
+  const fetchTx = useCallback(async () => {
     try {
       const res = await fetch(`/api/transactions/${id}`);
       if (!res.ok) throw new Error("Failed to fetch transaction");
@@ -38,7 +38,23 @@ export function useTransaction(id: string) {
     }
   }, [id]);
 
-  useEffect(() => { fetch_(); }, [fetch_]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/transactions/${id}`);
+        if (cancelled) return;
+        if (!res.ok) throw new Error("Failed to fetch transaction");
+        const { transaction } = await res.json();
+        if (!cancelled) { setData(transaction); setError(null); }
+      } catch (e) {
+        if (!cancelled) setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [id]);
 
-  return { transaction: data, loading, error, refetch: fetch_ };
+  return { transaction: data, loading, error, refetch: fetchTx };
 }

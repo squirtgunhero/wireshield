@@ -1,7 +1,24 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import { Shield, Clock, AlertTriangle, Eye } from "lucide-react";
+
+function useCountdown(expiresAt: string) {
+  const getSnapshot = useCallback(() => {
+    const diff = new Date(expiresAt).getTime() - Date.now();
+    return diff <= 0 ? 0 : Math.floor(diff / 1000);
+  }, [expiresAt]);
+
+  const subscribe = useCallback(
+    (cb: () => void) => {
+      const iv = setInterval(cb, 1000);
+      return () => clearInterval(iv);
+    },
+    []
+  );
+
+  return useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+}
 
 interface SecureViewerProps {
   wireId: string;
@@ -22,25 +39,9 @@ export function SecureViewer({
   amount,
   expiresAt,
 }: SecureViewerProps) {
-  const [timeLeft, setTimeLeft] = useState<number>(0);
-  const [expired, setExpired] = useState(false);
+  const timeLeft = useCountdown(expiresAt);
+  const expired = timeLeft <= 0;
   const [revealed, setRevealed] = useState(false);
-
-  const calcTimeLeft = useCallback(() => {
-    const diff = new Date(expiresAt).getTime() - Date.now();
-    if (diff <= 0) { setExpired(true); setRevealed(false); return 0; }
-    return Math.floor(diff / 1000);
-  }, [expiresAt]);
-
-  useEffect(() => {
-    setTimeLeft(calcTimeLeft());
-    const iv = setInterval(() => {
-      const t = calcTimeLeft();
-      setTimeLeft(t);
-      if (t <= 0) clearInterval(iv);
-    }, 1000);
-    return () => clearInterval(iv);
-  }, [calcTimeLeft]);
 
   useEffect(() => {
     function prevent(e: Event) { e.preventDefault(); }

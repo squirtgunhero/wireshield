@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { AlertCircle, Loader2 } from "lucide-react";
 
 export default function LoginPage() {

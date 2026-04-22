@@ -18,7 +18,7 @@ export function useWireInstructions(transactionId: string) {
   const [wires, setWires] = useState<WireData[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetch_ = useCallback(async () => {
+  const fetchWires = useCallback(async () => {
     try {
       const res = await fetch(`/api/transactions/${transactionId}`);
       if (!res.ok) throw new Error("Failed to fetch wires");
@@ -31,7 +31,23 @@ export function useWireInstructions(transactionId: string) {
     }
   }, [transactionId]);
 
-  useEffect(() => { fetch_(); }, [fetch_]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/transactions/${transactionId}`);
+        if (cancelled) return;
+        if (!res.ok) throw new Error("Failed");
+        const { transaction } = await res.json();
+        if (!cancelled) setWires(transaction.wireInstructions ?? []);
+      } catch {
+        if (!cancelled) setWires([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [transactionId]);
 
-  return { wires, loading, refetch: fetch_ };
+  return { wires, loading, refetch: fetchWires };
 }

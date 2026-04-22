@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Banknote, ArrowRight, ShieldCheck, AlertTriangle } from "lucide-react";
 import { SeverityBadge } from "@/components/ui/severity-badge";
-import { formatCurrency, formatDate } from "@/lib/utils/format";
+import { formatCurrency } from "@/lib/utils/format";
 
 interface WireData {
   id: string;

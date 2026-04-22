@@ -26,13 +26,11 @@ function ArrowIcon() {
 
 /* ───── Styles shared across sections ───── */
 const wrap = "mx-auto max-w-[1200px] px-8 max-[720px]:px-5";
-const ink = "text-[#0B1F1C]";
 const inkSoft = "text-[#3D5753]";
 const muted = "text-[#6B807D]";
 const jade = "#0E7C66";
 const jadeDeep = "#0A5A4A";
 const jadeSoft = "#E6F1EE";
-const paper = "#F6F5F0";
 
 export default function MarketingPage() {
   return (

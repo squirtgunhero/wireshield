@@ -17,7 +17,7 @@ export function useNotifications() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const fetch_ = useCallback(async () => {
+  const fetchNotifications = useCallback(async () => {
     try {
       const res = await fetch("/api/notifications");
       if (!res.ok) throw new Error("Failed to fetch notifications");
@@ -32,10 +32,26 @@ export function useNotifications() {
   }, []);
 
   useEffect(() => {
-    fetch_();
-    const iv = setInterval(fetch_, 30000);
-    return () => clearInterval(iv);
-  }, [fetch_]);
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/notifications");
+        if (cancelled) return;
+        if (!res.ok) throw new Error("Failed");
+        const data = await res.json();
+        if (!cancelled) {
+          setNotifications(data.notifications ?? []);
+          setUnreadCount(data.unreadCount ?? 0);
+        }
+      } catch {
+        if (!cancelled) setNotifications([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    const iv = setInterval(fetchNotifications, 30000);
+    return () => { cancelled = true; clearInterval(iv); };
+  }, [fetchNotifications]);
 
   async function markRead(id: string) {
     try {
@@ -45,5 +61,5 @@ export function useNotifications() {
     } catch { /* ignore */ }
   }
 
-  return { notifications, unreadCount, loading, refetch: fetch_, markRead };
+  return { notifications, unreadCount, loading, refetch: fetchNotifications, markRead };
 }

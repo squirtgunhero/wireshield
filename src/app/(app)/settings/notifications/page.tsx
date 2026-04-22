@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Bell, Mail, MessageSquare, Smartphone } from "lucide-react";
+import { ArrowLeft, Mail, MessageSquare, Smartphone } from "lucide-react";
 
 const NOTIFICATION_SETTINGS = [
   { id: "critical", label: "Critical alerts", desc: "Wire fraud, active attacks, compromised credentials", checked: true },

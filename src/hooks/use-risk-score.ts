@@ -14,7 +14,7 @@ export function useRiskScore(transactionId: string) {
   const [data, setData] = useState<RiskScoreData | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetch_ = useCallback(async () => {
+  const fetchScore = useCallback(async () => {
     try {
       const res = await fetch(`/api/risk/score/${transactionId}`);
       if (!res.ok) throw new Error("Failed to fetch risk score");
@@ -27,7 +27,23 @@ export function useRiskScore(transactionId: string) {
     }
   }, [transactionId]);
 
-  useEffect(() => { fetch_(); }, [fetch_]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/risk/score/${transactionId}`);
+        if (cancelled) return;
+        if (!res.ok) throw new Error("Failed");
+        const d = await res.json();
+        if (!cancelled) setData(d);
+      } catch {
+        if (!cancelled) setData(null);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [transactionId]);
 
-  return { riskScore: data, loading, refetch: fetch_ };
+  return { riskScore: data, loading, refetch: fetchScore };
 }
