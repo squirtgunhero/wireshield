@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Roboto_Mono } from "next/font/google";
-import { Fraunces } from "next/font/google";
+import { Inter, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { AnalyticsProvider } from "@/components/providers/analytics-provider";
 import "./globals.css";
 
-const interTight = Inter_Tight({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
 });
 
-const fraunces = Fraunces({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-serif",
-  axes: ["opsz"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
 });
 
-const robotoMono = Roboto_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-code",
   weight: ["400", "500"],
@@ -37,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${interTight.variable} ${fraunces.variable} ${robotoMono.variable} h-full`}
+      className={`${inter.variable} ${dmSans.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
         <AnalyticsProvider>

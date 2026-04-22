@@ -51,8 +51,8 @@ export default function MarketingPage() {
                 Live fraud intelligence for closings
               </span>
 
-              <h1 className="font-display font-normal text-[clamp(44px,6vw,76px)] leading-[0.98] tracking-[-0.035em] mt-6 mb-5" style={{ color: "#0B1F1C" }}>
-                Every wire transfer, <em className="font-light italic" style={{ color: jadeDeep }}>watched.</em> Every threat, caught.
+              <h1 className="font-display font-semibold text-[clamp(44px,6vw,72px)] leading-[1.02] tracking-[-0.035em] mt-6 mb-5" style={{ color: "#0B1F1C" }}>
+                Every wire transfer, <span className="font-normal" style={{ color: jadeDeep }}>watched.</span> Every threat, caught.
               </h1>
 
               <p className={`text-[19px] leading-relaxed ${inkSoft} max-w-[520px] mb-8`}>
@@ -176,8 +176,8 @@ export default function MarketingPage() {
               <div className="font-mono text-[11px] tracking-[0.12em] uppercase mb-[18px] flex items-center gap-2.5" style={{ color: jadeDeep }}>
                 <span className="w-6 h-px" style={{ background: jade }} /> Capabilities
               </div>
-              <h2 className="font-display font-normal text-[clamp(34px,4.2vw,52px)] leading-[1.02] tracking-[-0.025em] text-[#0B1F1C] m-0">
-                End-to-end <em className="font-light italic" style={{ color: jadeDeep }}>protection</em>
+              <h2 className="font-display font-semibold text-[clamp(34px,4.2vw,52px)] leading-[1.02] tracking-[-0.025em] text-[#0B1F1C] m-0">
+                End-to-end <span className="font-normal" style={{ color: jadeDeep }}>protection</span>
               </h2>
             </div>
             <p className={`text-[17px] leading-relaxed ${inkSoft} m-0 max-w-[520px]`}>
@@ -247,8 +247,8 @@ export default function MarketingPage() {
               <div className="font-mono text-[11px] tracking-[0.12em] uppercase mb-[18px] flex items-center gap-2.5" style={{ color: jadeDeep }}>
                 <span className="w-6 h-px" style={{ background: jade }} /> The flow
               </div>
-              <h2 className="font-display font-normal text-[clamp(34px,4.2vw,52px)] leading-[1.02] tracking-[-0.025em] text-[#0B1F1C] m-0">
-                Protection, <em className="font-light italic" style={{ color: jadeDeep }}>step by step</em>
+              <h2 className="font-display font-semibold text-[clamp(34px,4.2vw,52px)] leading-[1.02] tracking-[-0.025em] text-[#0B1F1C] m-0">
+                Protection, <span className="font-normal" style={{ color: jadeDeep }}>step by step</span>
               </h2>
             </div>
             <p className={`text-[17px] leading-relaxed ${inkSoft} m-0 max-w-[520px]`}>
@@ -315,8 +315,8 @@ export default function MarketingPage() {
               background: "radial-gradient(500px 300px at 85% 20%, rgba(14,124,102,0.2), transparent 60%), radial-gradient(400px 300px at 10% 90%, rgba(14,124,102,0.1), transparent 60%)"
             }} />
             <div className="relative">
-              <h2 className="font-display font-medium text-[clamp(32px,4vw,48px)] leading-[1.08] tracking-[-0.025em] mb-5 text-white">
-                The average wire fraud loss is <em className="font-normal italic text-[#7DDFCA]">six figures</em>. The defense shouldn&apos;t be an afterthought.
+              <h2 className="font-display font-semibold text-[clamp(32px,4vw,48px)] leading-[1.08] tracking-[-0.025em] mb-5 text-white">
+                The average wire fraud loss is <span className="font-normal text-[#7DDFCA]">six figures</span>. The defense shouldn&apos;t be an afterthought.
               </h2>
               <p className="text-[#C8D8D4] text-base leading-relaxed mb-7 max-w-[460px]">
                 Start the free trial. We&apos;ll monitor your next transaction end to end — every email, every wire, every party. No credit card. No setup call required.
